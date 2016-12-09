@@ -18,6 +18,8 @@ namespace Heavy
                 list[i] = i;
             }
 
+            var before = DateTime.UtcNow;
+
             Parallel.For(0, list.Length,
                    index => {
                        activ.Add(index);
@@ -38,17 +40,21 @@ namespace Heavy
                        activ.Remove(index);
                        Console.WriteLine("jobs: {0} jobIndex: {1}", activ.Count, Print(activ));
                    });
+
+            Console.WriteLine("Total time {0}", DateTime.UtcNow - before);
+            Console.ReadLine();
         }
 
         private static string Print(List<int> list)
         {
-            var builder = new StringBuilder();
-            foreach (var value in list)
-            {
-                builder.Append(value);
-                builder.Append(" ");
-            }
-            return builder.ToString();
+            //var builder = new StringBuilder();
+            //foreach (var value in list)
+            //{
+            //    builder.Append(value);
+            //    builder.Append(" ");
+            //}
+            //return builder.ToString();
+            return string.Empty;
         }
     }
 }
