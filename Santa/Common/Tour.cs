@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common
 {
     public class Tour
     {
-        private List<Gift> Gifts;
-
-        public List<Gift> GetTour()
-        {
-            return Gifts;
-        }
+        public List<Gift> Gifts { get; private set; }
 
         public void AddGift(Gift gift)
         {
             Gifts.Add(gift);
+        }
+
+        public bool IsValid()
+        {
+            return Gifts.Aggregate(0.0, (current, gift) => current + gift.Weight) <= Parameter.MaxWeight;
         }
     }
 }
