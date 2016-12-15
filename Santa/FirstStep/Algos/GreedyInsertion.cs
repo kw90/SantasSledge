@@ -1,9 +1,8 @@
 ﻿using Common;
+using Common.Alogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FirstStep.Algos
 {
@@ -17,7 +16,7 @@ namespace FirstStep.Algos
             }
         }
 
-        public IEnumerable<Gift> Solve(IEnumerable<Gift> pointsInput)
+        public IEnumerable<Gift> Solve(IEnumerable<Gift> pointsInput, double maxWeight)
         {
             var points = pointsInput
                 .OrderBy(p => p.Id)
@@ -28,6 +27,7 @@ namespace FirstStep.Algos
 
             //Initial partial tour 0 -> 1 -> 0
             nextIndices[0] = 1;
+            double currentWeight = 0;
 
             //Find the best position to insert for each remaining point
             for (int i = 2; i < points.Count(); i++)
@@ -39,9 +39,9 @@ namespace FirstStep.Algos
                 {
                     //Increased cost of tour if point i is inserted in place j
                     double distanceIncrease =
-                        points[j].CalculateDistanceTo(points[i])
-                        + points[i].CalculateDistanceTo(points[nextIndices[j]])
-                        - points[j].CalculateDistanceTo(points[nextIndices[j]]);
+                        points[j].DistanceTo(points[i])
+                        + points[i].DistanceTo(points[nextIndices[j]])
+                        - points[j].DistanceTo(points[nextIndices[j]]);
 
                     if (distanceIncrease < lowestDistanceIncrease)
                     {
@@ -50,12 +50,18 @@ namespace FirstStep.Algos
                     }
                 }
 
+                currentWeight += nextIndices[lowestDistanceIncreaseIdx];
+                if(currentWeight > maxWeight)
+                {
+                    break;
+                }
+
                 nextIndices[i] = nextIndices[lowestDistanceIncreaseIdx];
                 nextIndices[lowestDistanceIncreaseIdx] = i;
             }
 
             //Walk along next indices to build solution.
-            List<Point> solution = new List<Point>();
+            List<Gift> solution = new List<Gift>();
             int index = 0;
             for (int i = 0; i < points.Count(); i++)
             {
