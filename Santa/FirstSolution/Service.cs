@@ -17,11 +17,13 @@ namespace FirstSolution
 
         private readonly Validator validator;
         private readonly Reader reader;
+        private readonly Writer writer;
 
         public Service()
         {
             this.validator = new Validator();
             this.reader = new Reader();
+            this.writer = new Writer();
         }
 
         public void Run()
@@ -31,10 +33,9 @@ namespace FirstSolution
             var total = this.reader.GetGifts(workSpace + @"\Total\gifts.csv");
 
             this.validator.Validate(total, areas);
-            var areaTours = new List<IEnumerable<Tour>>();
             Parallel.ForEach(areas, area =>
             {
-                var gifts = area;
+                var gifts = area.Gifts;
                 var tours = new List<Tour>();
                 while (gifts.Count() > 0)
                 {
@@ -45,7 +46,7 @@ namespace FirstSolution
                     Console.WriteLine("Tours: {0}, Remaining gifts: {1}", tours.Count(), gifts.Count());
                 }
 
-                areaTours.Add(tours);
+                area.AddTour(tours);
                 Console.WriteLine("Finished for area: ");
 
                 //foreach (var tour in tours)
@@ -55,16 +56,36 @@ namespace FirstSolution
                 //}
             });
 
-            Console.WriteLine("Total tour count: {0}", areaTours.SelectMany(t => t).Count());
+            Write(areas);
+
+            //Console.WriteLine("Total tour count: {0}", areas.SelectMany(t => t).Count());
             Console.ReadLine();
         }
 
-        private IEnumerable<IEnumerable<Gift>> GetAreas(IEnumerable<string> files)
+        private void Write(IEnumerable<Area> areas)
         {
-            var areas = new List<IEnumerable<Gift>>();
+            foreach (var area in areas)
+            {
+                var dirPath = workSpace + @"\Tours\" + area.Name + @"\"; 
+                Directory.CreateDirectory(dirPath);
+                var tourId = 0;
+                foreach (var tour in area.Tours)
+                {
+                    tourId++; ;
+                    this.writer.Write(dirPath, tourId.ToString(), tour.Gifts);
+                }
+            }
+        }
+
+        private IEnumerable<Area> GetAreas(IEnumerable<string> files)
+        {
+            var areas = new List<Area>();
             foreach(var file in files)
             {
-                areas.Add(this.reader.GetGifts(file));
+                var name = Path.GetFileNameWithoutExtension(file);
+                var gifts = this.reader.GetGifts(file);
+                var area = new Area(name, gifts);
+                areas.Add(area);
             }
             return areas;
         }

@@ -7,13 +7,13 @@ namespace FirstSolution
 {
     public class Validator
     {
-        public void Validate(IEnumerable<Gift> totalGifts, IEnumerable<IEnumerable<Gift>> areas)
+        public void Validate(IEnumerable<Gift> totalGifts, IEnumerable<Area> areas)
         {
             var totalGiftCount = totalGifts.Count();
             int areaGiftCount = 0;
             foreach (var area in areas)
             {
-                areaGiftCount += area.Count();
+                areaGiftCount += area.Gifts.Count();
             }
 
             if(totalGiftCount != areaGiftCount)
