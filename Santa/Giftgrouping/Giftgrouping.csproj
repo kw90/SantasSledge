@@ -45,12 +45,17 @@
   <ItemGroup>
     <Compile Include="CsvIO\Reader.cs" />
     <Compile Include="CsvIO\Writer.cs" />
-    <Compile Include="Gift.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{BA8945C2-8B4A-47E0-BFEC-A9A45870D996}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
