@@ -8,8 +8,8 @@ namespace Tests.Common
     {
         private Tour testee;
 
-        [TestFixtureSetUp]
-        public void SetUp()
+        [SetUp]
+        public void Init()
         {
             testee = new Tour();
             testee.AddGift(new Gift(1, 500, 0, 0));
