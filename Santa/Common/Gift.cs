@@ -6,8 +6,7 @@ namespace Common
     {
         public int Id { get; private set; }
         public double Weight { get; private set; }
-        public double Latitude { get; private set; }
-        public double Longitude { get; private set; }
+        public Location Location { get; private set; }
 
         public Gift(
             int id,
@@ -17,8 +16,7 @@ namespace Common
         {
             this.Id = id;
             this.Weight = weight;
-            this.Latitude = latitude;
-            this.Longitude = longitude;
+            this.Location = new Location(latitude, longitude);
         }
     }
 }

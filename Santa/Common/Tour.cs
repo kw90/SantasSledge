@@ -17,9 +17,14 @@ namespace Common
             Gifts.Add(gift);
         }
 
+        public double GetStartWeightOfTour()
+        {
+            return Gifts.Aggregate(0.0, (current, gift) => current + gift.Weight);
+        }
+
         public bool IsValid()
         {
-            return Gifts.Aggregate(0.0, (current, gift) => current + gift.Weight) <= Parameter.MaxWeight;
+            return GetStartWeightOfTour() <= Parameter.MaxWeight;
         }
     }
 }
