@@ -1,10 +1,10 @@
 ﻿using Common;
-using FirstStep.Algos;
+using FirstSolution.Algos;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Tests.FirstStep
+namespace Tests.FirstSolution
 {
     [TestFixture]
     public class NearestNeighbourTests

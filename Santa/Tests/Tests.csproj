@@ -57,7 +57,7 @@
     <Compile Include="Common\LocationExtensionsTests.cs" />
     <Compile Include="Common\TourTest.cs" />
     <Compile Include="Common\WeightedReindeerWearinessTest.cs" />
-    <Compile Include="FirstStep\NearestNeighbourTests.cs" />
+    <Compile Include="FirstSolution\NearestNeighbourTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,9 +68,9 @@
       <Project>{ba8945c2-8b4a-47e0-bfec-a9a45870d996}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FirstStep\FirstStep.csproj">
-      <Project>{D0EC511F-C29C-492E-985F-FBE2A441C310}</Project>
-      <Name>FirstStep</Name>
+    <ProjectReference Include="..\FirstSolution\FirstSolution.csproj">
+      <Project>{75dce30b-fa4c-4f3f-a914-4aebdce2603e}</Project>
+      <Name>FirstSolution</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
