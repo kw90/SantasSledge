@@ -70,5 +70,26 @@ namespace Tests.FirstStep
             Assert.AreEqual(tour[3], gifts[1]);
             Assert.AreEqual(tour[4], gifts[0]);
         }
+
+        [Test]
+        public void Solve_FiveGiftsWithTotalWeightOverMaxWeight_ReturnListInCorrectOrderWithContainingOnlySubsetOfGifts()
+        {
+            var maxWeight = 40;
+            var gifts = new List<Gift>
+            {
+                new Gift(1, 20, 0, 0),
+                new Gift(2, 20, 0, 1),
+                new Gift(3, 20, 0, 4),
+                new Gift(4, 20, 0, 2),
+                new Gift(5, 20, 0, 3)
+            };
+
+            var greedyInsertion = new GreedyInsertion();
+            var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
+
+            Assert.AreEqual(2, tour.Count());
+            Assert.AreEqual(tour[0], gifts[1]);
+            Assert.AreEqual(tour[1], gifts[0]);
+        }
     }
 }
