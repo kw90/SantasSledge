@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureConnection", "AzureCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobApp", "JobApp\JobApp.csproj", "{B2975C17-ADD7-4DB3-A9F0-6B1064E5C4E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstStep", "FirstStep\FirstStep.csproj", "{D0EC511F-C29C-492E-985F-FBE2A441C310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{BA8945C2-8B4A-47E0-BFEC-A9A45870D996}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{B2975C17-ADD7-4DB3-A9F0-6B1064E5C4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2975C17-ADD7-4DB3-A9F0-6B1064E5C4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2975C17-ADD7-4DB3-A9F0-6B1064E5C4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0EC511F-C29C-492E-985F-FBE2A441C310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0EC511F-C29C-492E-985F-FBE2A441C310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0EC511F-C29C-492E-985F-FBE2A441C310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0EC511F-C29C-492E-985F-FBE2A441C310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8945C2-8B4A-47E0-BFEC-A9A45870D996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8945C2-8B4A-47E0-BFEC-A9A45870D996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8945C2-8B4A-47E0-BFEC-A9A45870D996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8945C2-8B4A-47E0-BFEC-A9A45870D996}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +54,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{36A8BD47-0F5E-4C69-943D-D4C7B20398CD} = {59581A56-C23C-4E0C-BABD-FEA03DAA22BD}
 		{B2975C17-ADD7-4DB3-A9F0-6B1064E5C4E7} = {59581A56-C23C-4E0C-BABD-FEA03DAA22BD}
+		{D0EC511F-C29C-492E-985F-FBE2A441C310} = {59581A56-C23C-4E0C-BABD-FEA03DAA22BD}
 	EndGlobalSection
 EndGlobal
