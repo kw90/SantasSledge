@@ -8,8 +8,6 @@ namespace Common.Alogs
 {
     public class WeightedReindeerWeariness
     {
-        private static Location InitialLocation = new Location(90.0, 0.0);
-
         public static double Calculate(List<Tour> tours)
         {
             double weightedReindeerWeariness = 0.0;
@@ -26,7 +24,7 @@ namespace Common.Alogs
         {
             double weightedReindeerWeariness = 0.0;
 
-            Location currentLocation = InitialLocation;
+            Location currentLocation = Parameter.InitialLocation;
             double sleighWeight = tour.GetStartWeightOfTour() + Parameter.BaseSleighWeight;
             foreach(Gift gift in tour.Gifts)
             {
@@ -34,9 +32,9 @@ namespace Common.Alogs
                 currentLocation = gift.Location;
                 sleighWeight -= gift.Weight;
             }
-            weightedReindeerWeariness += (sleighWeight * currentLocation.DistanceTo(InitialLocation));
+            weightedReindeerWeariness += (sleighWeight * currentLocation.DistanceTo(Parameter.InitialLocation));
 
-            return 0.0;
+            return weightedReindeerWeariness;
         }
     }
 }

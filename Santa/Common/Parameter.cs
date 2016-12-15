@@ -10,5 +10,6 @@ namespace Common
     {
         public const double MaxWeight = 1000.0;
         public const double BaseSleighWeight = 10.0;
+        public static readonly Location InitialLocation = new Location(90.0, 0.0);
     }
 }
