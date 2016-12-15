@@ -55,6 +55,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Common\TourTest.cs" />
+    <Compile Include="FirstStep\GreedyInsertionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{ba8945c2-8b4a-47e0-bfec-a9a45870d996}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FirstStep\FirstStep.csproj">
+      <Project>{D0EC511F-C29C-492E-985F-FBE2A441C310}</Project>
+      <Name>FirstStep</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
