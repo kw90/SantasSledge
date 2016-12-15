@@ -10,9 +10,17 @@ namespace Tests.FirstStep
     public class GreedyInsertionTest
     {
         [Test]
+        public void Solve_GiftListEmpty_ReturnEmptyList()
+        {
+            var greedyInsertion = new GreedyInsertion();
+            var tour = greedyInsertion.Solve(new List<Gift>(), 0);
+
+            Assert.AreEqual(0, tour.Count());
+        }
+
+        [Test]
         public void Solve_OnlyOneGiftAndTooHeavy_ReturnEmptyList()
         {
-            var nordpole = new Gift(0, 0, 0, 0);
             var maxWeight = 10;
             var gifts = new List<Gift>
             {
@@ -20,15 +28,14 @@ namespace Tests.FirstStep
             };
 
             var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(nordpole, gifts, maxWeight);
+            var tour = greedyInsertion.Solve(gifts, maxWeight);
 
             Assert.AreEqual(0, tour.Count());
          }
 
         [Test]
-        public void Solve_OnlyOneGiftAndWeightIsOk_ReturnListWithNorthPoleAndGift()
+        public void Solve_OnlyOneGiftAndWeightIsOk_ReturnListWithGift()
         {
-            var nordpole = new Gift(0, 0, 0, 0);
             var maxWeight = 10;
             var gifts = new List<Gift>
             {
@@ -36,30 +43,32 @@ namespace Tests.FirstStep
             };
 
             var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(nordpole, gifts, maxWeight).ToList();
+            var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
 
-            Assert.AreEqual(tour.First(), nordpole);
-            Assert.AreEqual(tour[1], gifts.First());
+            Assert.AreEqual(tour.First(), gifts.First());
         }
 
         [Test]
-        public void Solve_()
+        public void Solve_FiveGiftsWithTotalWeightUnderMaxWeight_ReturnListInCorrectOrderWithContainingAllGifts()
         {
-            var nordpole = new Gift(0, 0, 0, 0);
-            var maxWeight = 10;
+            var maxWeight = 1000;
             var gifts = new List<Gift>
             {
-                new Gift(1, 2, 0, 0),
-                new Gift(2, 3, 1, 0),
-                new Gift(3, 10, 2, 0)
+                new Gift(1, 20, 0, 0),
+                new Gift(2, 20, 0, 1),
+                new Gift(3, 20, 0, 4),
+                new Gift(4, 20, 0, 2),
+                new Gift(5, 20, 0, 3)
             };
 
             var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(nordpole, gifts, maxWeight).ToList();
+            var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
             
-            Assert.AreEqual(tour[1], gifts.First());
-            Assert.AreEqual(tour[2], gifts[1]);
-            Assert.AreEqual(3, tour.Count());
+            Assert.AreEqual(tour[0], gifts[2]);
+            Assert.AreEqual(tour[1], gifts[4]);
+            Assert.AreEqual(tour[2], gifts[3]);
+            Assert.AreEqual(tour[3], gifts[1]);
+            Assert.AreEqual(tour[4], gifts[0]);
         }
     }
 }

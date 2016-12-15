@@ -8,80 +8,159 @@ namespace FirstStep.Algos
 {
     public class GreedyInsertion
     {
-        public string Id
+        public IEnumerable<Gift> Solve(IEnumerable<Gift> gifts, double maxWeight)
         {
-            get
+            if (gifts.Any() == false)
             {
-                return "GreedyInsertion";
+                return new List<Gift>();
             }
-        }
 
-        public IEnumerable<Gift> Solve(Gift nordpole, IEnumerable<Gift> gifts, double maxWeight)
-        {
-            var points = gifts
-                .OrderBy(p => p.Id)
-                .ToList();
-            points.Reverse();
-            points.Add(nordpole);
-            points.Reverse();
-            points.ToArray();
+            var northPole = new NorthPole();
 
-            //Array with the indices of the next nodes
-            int[] nextIndices = new int[points.Count()];
+            gifts = gifts
+                .OrderBy(g => g.Id);
+            var tour = new List<Gift>();
 
-            //Initial partial tour 0 -> 1 -> 0
-            nextIndices[0] = 1;
-            double currentWeight = 0;
-
-            if(points.Count == 2)
+            double totalWeight = 0;
+            double currentDistance = 0;
+            int indexToAdd = 0;
+            foreach (var gift in gifts)
             {
-                if(maxWeight < points.Select(g => g.Weight).Sum())
+                if (tour.Any() == false)
                 {
-                    return new List<Gift>();
+                    currentDistance += 2 * northPole.Location.DistanceTo(gift.Location);
                 }
-            }
-
-            //Find the best position to insert for each remaining point
-            for (int i = 2; i < points.Count(); i++)
-            {
-                double lowestDistanceIncrease = Double.PositiveInfinity;
-                int lowestDistanceIncreaseIdx = -1;
-
-                for (int j = 0; j < i; j++)
+                else
                 {
-                    //Increased cost of tour if point i is inserted in place j
-                    double distanceIncrease =
-                        points[j].DistanceTo(points[i])
-                        + points[i].DistanceTo(points[nextIndices[j]])
-                        - points[j].DistanceTo(points[nextIndices[j]]);
-
-                    if (distanceIncrease < lowestDistanceIncrease)
+                    var indexWithLowestLenthIncrease = -1;
+                    var previosTourLenght = tour.Count();
+                    var increase = double.PositiveInfinity;
+                    for (int i = 0; i <= previosTourLenght; i++)
                     {
-                        lowestDistanceIncrease = distanceIncrease;
-                        lowestDistanceIncreaseIdx = j;
+                        var currentIncrease = CalculateLenghtIncrease(northPole, tour, i, gift);
+                        if (currentIncrease < increase)
+                        {
+                            indexWithLowestLenthIncrease = i;
+                            increase = currentIncrease;
+                        }
                     }
+                    indexToAdd = indexWithLowestLenthIncrease;
                 }
 
-                currentWeight += nextIndices[lowestDistanceIncreaseIdx];
-                if(currentWeight > maxWeight)
+                totalWeight += gift.Weight;
+                if (totalWeight > maxWeight)
                 {
                     break;
                 }
+                else
+                {
+                    if(indexToAdd > tour.Count() - 1)
+                    {
+                        tour.Add(gift);
+                    }
+                    else
+                    {
+                        var before = tour
+                            .Take(indexToAdd)
+                            .ToList();
 
-                nextIndices[i] = nextIndices[lowestDistanceIncreaseIdx];
-                nextIndices[lowestDistanceIncreaseIdx] = i;
+                        tour.Reverse();
+                        var after = tour
+                            .Take(tour.Count() - indexToAdd)
+                            .Reverse();
+
+
+                        before.Add(gift);
+                        before.AddRange(after);
+
+                        tour = before;
+                    }
+                }
             }
 
-            //Walk along next indices to build solution.
-            List<Gift> solution = new List<Gift>();
-            int index = 0;
-            for (int i = 0; i < points.Count(); i++)
+            return tour;
+
+            ////Array with the indices of the next nodes
+            //int[] nextIndices = new int[points.Count()];
+
+            ////Initial partial tour 0 -> 1 -> 0
+            //nextIndices[0] = 1;
+            //double currentWeight = 0;
+
+            //if(points.Count == 2)
+            //{
+            //    if(maxWeight < points.Select(g => g.Weight).Sum())
+            //    {
+            //        return new List<Gift>();
+            //    }
+            //}
+
+            ////Find the best position to insert for each remaining point
+            //for (int i = 2; i < points.Count(); i++)
+            //{
+            //    double lowestDistanceIncrease = Double.PositiveInfinity;
+            //    int lowestDistanceIncreaseIdx = -1;
+
+            //    for (int j = 0; j < i; j++)
+            //    {
+            //        //Increased cost of tour if point i is inserted in place j
+            //        double distanceIncrease =
+            //            points[j].DistanceTo(points[i])
+            //            + points[i].DistanceTo(points[nextIndices[j]])
+            //            - points[j].DistanceTo(points[nextIndices[j]]);
+
+            //        if (distanceIncrease < lowestDistanceIncrease)
+            //        {
+            //            lowestDistanceIncrease = distanceIncrease;
+            //            lowestDistanceIncreaseIdx = j;
+            //        }
+            //    }
+
+            //    currentWeight += nextIndices[lowestDistanceIncreaseIdx];
+            //    if(currentWeight > maxWeight)
+            //    {
+            //        break;
+            //    }
+
+            //    nextIndices[i] = nextIndices[lowestDistanceIncreaseIdx];
+            //    nextIndices[lowestDistanceIncreaseIdx] = i;
+            //}
+
+            ////Walk along next indices to build solution.
+            //List<Gift> solution = new List<Gift>();
+            //int index = 0;
+            //for (int i = 0; i < points.Count(); i++)
+            //{
+            //    solution.Add(points[index]);
+            //    index = nextIndices[index];
+            //}
+
+            //return solution;
+        }
+
+        private double CalculateLenghtIncrease(NorthPole northPole, List<Gift> tour, int insertionIndex, Gift giftToInsert)
+        {
+            if(insertionIndex == 0)
             {
-                solution.Add(points[index]);
-                index = nextIndices[index];
+                var firtsInTour = tour.First();
+                return giftToInsert.Location.DistanceTo(northPole.Location)
+                    + giftToInsert.Location.DistanceTo(firtsInTour.Location)
+                    - firtsInTour.Location.DistanceTo(northPole.Location);
             }
 
-            return solution;
+            if(insertionIndex == tour.Count)
+            {
+                var lastInTour = tour[tour.Count - 1];
+                return giftToInsert.Location.DistanceTo(northPole.Location)
+                    + giftToInsert.Location.DistanceTo(lastInTour.Location)
+                    - lastInTour.Location.DistanceTo(northPole.Location);
+            }
+
+            var currentGiftAtPosition = tour[insertionIndex];
+            var giftBeforePosition = tour[insertionIndex - 1];
+            return giftToInsert.Location.DistanceTo(currentGiftAtPosition.Location)
+                + giftToInsert.Location.DistanceTo(giftBeforePosition.Location)
+                - currentGiftAtPosition.Location.DistanceTo(giftBeforePosition.Location);
         }
     }
 }
