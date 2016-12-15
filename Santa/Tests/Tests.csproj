@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Common\LocationExtensionsTests.cs" />
     <Compile Include="Common\TourTest.cs" />
     <Compile Include="Common\WeightedReindeerWearinessTest.cs" />
     <Compile Include="FirstStep\GreedyInsertionTest.cs" />
