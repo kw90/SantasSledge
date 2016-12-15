@@ -1,5 +1,5 @@
 ﻿using Common;
-using Common.Alogs;
+using Common.Algos;
 using System.Collections.Generic;
 using System.Linq;
 

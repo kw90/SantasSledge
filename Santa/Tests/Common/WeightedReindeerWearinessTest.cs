@@ -1,5 +1,5 @@
 ﻿using Common;
-using Common.Alogs;
+using Common.Algos;
 using NUnit.Framework;
 
 namespace Tests.Common
