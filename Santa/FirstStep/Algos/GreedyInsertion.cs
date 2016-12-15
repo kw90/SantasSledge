@@ -18,10 +18,10 @@ namespace FirstStep.Algos
 
         public IEnumerable<Gift> Solve(IEnumerable<Gift> pointsInput, double maxWeight)
         {
-            var points = pointsInput
+            var solution = pointsInput
                 .OrderBy(p => p.Id)
                 .ToArray();
-
+			/*
             //Array with the indices of the next nodes
             int[] nextIndices = new int[points.Count()];
 
@@ -68,7 +68,7 @@ namespace FirstStep.Algos
                 solution.Add(points[index]);
                 index = nextIndices[index];
             }
-
+			*/
             return solution;
         }
     }
