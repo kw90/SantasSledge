@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{BA8945C2-8B4A-47E0-BFEC-A9A45870D996}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FirstStep\FirstStep.csproj">
       <Project>{d0ec511f-c29c-492e-985f-fbe2a441c310}</Project>
       <Name>FirstStep</Name>

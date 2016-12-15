@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.CsvIO;
+using Common.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,8 +89,7 @@ namespace Giftgrouping
 
         private static void PlotInfos(List<Gift> gifts)
         {
-            Console.WriteLine("number of gifts: {0}", gifts.Count);
-            Console.WriteLine("total weight: {0}", gifts.Select(g => g.Weight).Sum());
+            Plotter.PlotInfo(gifts);
         }
 
         private static List<Gift> GetGiftsForHaway(List<Gift> gifs)
@@ -104,10 +104,7 @@ namespace Giftgrouping
         private static void Plot(List<Gift> gifts)
         {
             var subset = gifts.Take(100);
-            foreach (var gift in subset)
-            {
-                Console.WriteLine("{0},{1}", gift.Location.Latitude, gift.Location.Longitude);
-            }
+            Plotter.Plot(subset);
         }
 
         private static List<Gift> South(List<Gift> gifts)

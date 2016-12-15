@@ -1,4 +1,7 @@
-﻿using FirstStep.Algos;
+﻿using Common.CsvIO;
+using Common.utils;
+using FirstStep.Algos;
+using System;
 
 namespace SingleGreedyInsertion
 {
@@ -6,9 +9,18 @@ namespace SingleGreedyInsertion
     {
         static void Main(string[] args)
         {
-            var greedyInsertion = new GreedyInsertion();
+            const string path = @"C:\Users\linri\Desktop\Santa\europa.csv";
+            const double maxWeight = 1000;
 
-            //greedyInsertion.Solve();
+            var reader = new Reader();
+            var gifts = reader.GetGifts(path);
+
+            var tour = new GreedyInsertion().Solve(gifts, maxWeight);
+
+            Plotter.Plot(tour);
+            Plotter.PlotInfo(tour);
+
+            Console.ReadLine();
         }
     }
 }
