@@ -19,25 +19,57 @@ namespace Giftgrouping
         static void Main(string[] args)
         {
             var gifts = new Reader().GetGifts(workSpace + "gifts.csv");
+            var totalGiftCount = gifts.Count();
+
+            var groenland = gifts
+                .Where(g => g.Latitude > 60)
+                .Where(g => g.Longitude > -75)
+                .Where(g => g.Longitude < -0)
+                .ToList();
+
+            gifts = gifts.Except(groenland).ToList(); 
+
+            Plot(groenland);
+            PlotInfos(groenland);
+
 
             var southUnderPolar = South(gifts);
             var giftsForNorthAmerica = GetGiftsForNorthAmerica(gifts);
+
+            var giftsForHaway = GetGiftsForHaway(giftsForNorthAmerica);
+            giftsForNorthAmerica = giftsForNorthAmerica.Except(giftsForHaway).ToList();
+
+            var weight = giftsForHaway
+                .Select(g => g.Weight)
+                .Sum();
+
             var forSouthAmerica = GetGiftsForSouthAmerica(gifts);
             var giftsForEurope = Europa(gifts);
             var africa = Aftrica(gifts);
             var giftsForAsia = Asia(gifts);
+
             var australia = Australia(gifts);
 
-            //Plot(australia);
+            var newSealand = australia
+                .Where(g => g.Longitude > 160)
+                .Where(g => g.Latitude < -35)
+                .ToList();
 
-            Console.WriteLine(gifts.Count);
+            australia = australia.Except(newSealand).ToList();
+
+            
+
+            Console.WriteLine(totalGiftCount);
             Console.WriteLine(
                 giftsForNorthAmerica.Count
+                + groenland.Count
+                + giftsForHaway.Count
                 + forSouthAmerica.Count
                 + giftsForEurope.Count
                 + africa.Count
                 + giftsForAsia.Count
                 + australia.Count
+                + newSealand.Count
                 + southUnderPolar.Count);
 
             var writer = new Writer();
@@ -51,6 +83,21 @@ namespace Giftgrouping
             writer.Write(workSpace, "southPole", southUnderPolar);
 
             Console.ReadLine();
+        }
+
+        private static void PlotInfos(List<Gift> gifts)
+        {
+            Console.WriteLine("number of gifts: {0}", gifts.Count);
+            Console.WriteLine("total weight: {0}", gifts.Select(g => g.Weight).Sum());
+        }
+
+        private static List<Gift> GetGiftsForHaway(List<Gift> gifs)
+        {
+            return gifs
+                .Where(g => g.Latitude > 0)
+                .Where(g => g.Latitude < 24)
+                .Where(g => g.Longitude < -150)
+                .ToList();
         }
 
         private static void Plot(List<Gift> gifts)
