@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace Common.Alogs
 {
-    public static class GiftExtensions
+    public static class LocationExtensions
     {
         public static double DistanceTo(this Gift one, Gift two)
+        {
+            return one.Location.DistanceTo(two.Location);
+        }
+
+        public static double DistanceTo(this Location one, Location two)
         {
             const double radius = 6371000;
 
@@ -19,15 +24,15 @@ namespace Common.Alogs
             var lambdaTwo = ToRadiant(two.Longitude);
 
             var underRoot =
-                PowTwo(Math.Sin((phyTwo - phyOne)/2))
+                PowTwo(Math.Sin((phyTwo - phyOne) / 2))
                 + Math.Cos(phyOne)
                 * Math.Cos(phyTwo)
-                * PowTwo(Math.Sin((lambdaTwo - lambdaOne)/2));
+                * PowTwo(Math.Sin((lambdaTwo - lambdaOne) / 2));
 
             var arg = Math.Sqrt(underRoot);
 
-            return 
-                2 
+            return
+                2
                 * radius
                 * Math.Asin(arg);
         }

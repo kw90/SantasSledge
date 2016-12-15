@@ -36,5 +36,13 @@ namespace Tests.Common
             testee.AddGift(new Gift(3, 0.001, 5, 5));
             Assert.AreEqual(oldCount + 1, testee.Gifts.Count);
         }
+
+        [Test]
+        public void TestGetStartWeightOftour()
+        {
+            Assert.AreEqual(1000.0, testee.GetStartWeightOfTour());
+            testee.AddGift(new Gift(3, 0.001, 5, 5));
+            Assert.AreEqual(1000.001, testee.GetStartWeightOfTour());
+        }
     }
 }

@@ -19,9 +19,9 @@ namespace Giftgrouping.CsvIO
 
                     builder.Append(gift.Id);
                     builder.Append(",");
-                    builder.Append(gift.Latitude);
+                    builder.Append(gift.Location.Latitude);
                     builder.Append(",");
-                    builder.Append(gift.Longitude);
+                    builder.Append(gift.Location.Longitude);
                     builder.Append(",");
                     builder.Append(gift.Weight);
 
