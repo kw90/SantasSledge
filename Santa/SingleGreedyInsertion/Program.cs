@@ -17,8 +17,8 @@ namespace SingleGreedyInsertion
 
             var tour = new NearestNeighbour().GetTour(gifts, maxWeight);
 
-            Plotter.Plot(tour);
-            Plotter.PlotInfo(tour);
+            Plotter.Plot(tour.Gifts);
+            Plotter.PlotInfo(tour.Gifts);
 
             Console.ReadLine();
         }

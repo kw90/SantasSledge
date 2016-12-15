@@ -7,11 +7,11 @@ namespace FirstStep.Algos
 {
     public class NearestNeighbour
     {
-        public IEnumerable<Gift> GetTour(IEnumerable<Gift> giftsInput, double maxWeight)
+        public Tour GetTour(IEnumerable<Gift> giftsInput, double maxWeight)
         {
             if (giftsInput.Any() == false)
             {
-                return new List<Gift>();
+                return new Tour();
             }
 
             var gifts = giftsInput.ToList();
@@ -21,11 +21,11 @@ namespace FirstStep.Algos
             var firstGift = GetNearestGift(northPole.Location, gifts);
             if(firstGift.Weight >= maxWeight)
             {
-                return new List<Gift>();
+                return new Tour();
             }
 
-            var tour = new List<Gift>();
-            tour.Add(firstGift);
+            var tour = new Tour();
+            tour.AddGift(firstGift);
             var lastGift = firstGift;
             gifts.Remove(lastGift);
             var currentWeight = lastGift.Weight;
@@ -37,7 +37,7 @@ namespace FirstStep.Algos
                 {
                     lastGift = nextGift;
                     gifts.Remove(lastGift);
-                    tour.Add(lastGift);
+                    tour.AddGift(lastGift);
                 }
                 else
                 {

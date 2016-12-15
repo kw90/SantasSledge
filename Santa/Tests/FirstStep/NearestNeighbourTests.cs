@@ -15,7 +15,7 @@ namespace Tests.FirstStep
             var nearestNeighbour = new NearestNeighbour();
             var tour = nearestNeighbour.GetTour(new List<Gift>(), 0);
 
-            Assert.AreEqual(0, tour.Count());
+            Assert.AreEqual(0, tour.Gifts.Count());
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Tests.FirstStep
             var nearestNeighbour = new NearestNeighbour();
             var tour = nearestNeighbour.GetTour(gifts, maxWeight);
 
-            Assert.AreEqual(0, tour.Count());
+            Assert.AreEqual(0, tour.Gifts.Count());
          }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Tests.FirstStep
             };
 
             var nearestNeighbour = new NearestNeighbour();
-            var tour = nearestNeighbour.GetTour(gifts, maxWeight).ToList();
+            var tour = nearestNeighbour.GetTour(gifts, maxWeight).Gifts;
 
             Assert.AreEqual(tour.First(), gifts.First());
         }
@@ -62,7 +62,7 @@ namespace Tests.FirstStep
             };
 
             var nearestNeighbour = new NearestNeighbour();
-            var tour = nearestNeighbour.GetTour(gifts, maxWeight).ToList();
+            var tour = nearestNeighbour.GetTour(gifts, maxWeight).Gifts;
             
             Assert.AreEqual(tour[0], gifts[2]);
             Assert.AreEqual(tour[1], gifts[1]);
@@ -85,7 +85,7 @@ namespace Tests.FirstStep
             };
 
             var nearestNeighbour = new NearestNeighbour();
-            var tour = nearestNeighbour.GetTour(gifts, maxWeight).ToList();
+            var tour = nearestNeighbour.GetTour(gifts, maxWeight).Gifts;
 
             Assert.AreEqual(2, tour.Count());
             Assert.AreEqual(tour[0], gifts[4]);
