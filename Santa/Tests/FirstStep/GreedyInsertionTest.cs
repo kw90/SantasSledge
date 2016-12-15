@@ -55,19 +55,19 @@ namespace Tests.FirstStep
             var gifts = new List<Gift>
             {
                 new Gift(1, 20, 0, 0),
-                new Gift(2, 20, 0, 1),
-                new Gift(3, 20, 0, 4),
-                new Gift(4, 20, 0, 2),
-                new Gift(5, 20, 0, 3)
+                new Gift(2, 20, 30, 0),
+                new Gift(3, 20, 70, 0),
+                new Gift(4, 20, 10, 0),
+                new Gift(5, 20, 5, 0)
             };
 
             var greedyInsertion = new GreedyInsertion();
             var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
             
             Assert.AreEqual(tour[0], gifts[2]);
-            Assert.AreEqual(tour[1], gifts[4]);
+            Assert.AreEqual(tour[1], gifts[1]);
             Assert.AreEqual(tour[2], gifts[3]);
-            Assert.AreEqual(tour[3], gifts[1]);
+            Assert.AreEqual(tour[3], gifts[4]);
             Assert.AreEqual(tour[4], gifts[0]);
         }
 
@@ -77,19 +77,19 @@ namespace Tests.FirstStep
             var maxWeight = 40;
             var gifts = new List<Gift>
             {
-                new Gift(1, 20, 0, 0),
-                new Gift(2, 20, 0, 1),
-                new Gift(3, 20, 0, 4),
-                new Gift(4, 20, 0, 2),
-                new Gift(5, 20, 0, 3)
+                new Gift(1, 20, 3, 0),
+                new Gift(2, 20, 2, 0),
+                new Gift(3, 20, 60, 0),
+                new Gift(4, 20, 1, 0),
+                new Gift(5, 20, 80, 0)
             };
 
             var greedyInsertion = new GreedyInsertion();
             var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
 
             Assert.AreEqual(2, tour.Count());
-            Assert.AreEqual(tour[0], gifts[1]);
-            Assert.AreEqual(tour[1], gifts[0]);
+            Assert.AreEqual(tour[0], gifts[4]);
+            Assert.AreEqual(tour[1], gifts[2]);
         }
     }
 }
