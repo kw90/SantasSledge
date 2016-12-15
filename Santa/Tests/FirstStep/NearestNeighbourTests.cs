@@ -7,19 +7,19 @@ using System.Linq;
 namespace Tests.FirstStep
 {
     [TestFixture]
-    public class GreedyInsertionTest
+    public class NearestNeighbourTests
     {
         [Test]
-        public void Solve_GiftListEmpty_ReturnEmptyList()
+        public void GetTour_GiftListEmpty_ReturnEmptyList()
         {
-            var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(new List<Gift>(), 0);
+            var nearestNeighbour = new NearestNeighbour();
+            var tour = nearestNeighbour.GetTour(new List<Gift>(), 0);
 
             Assert.AreEqual(0, tour.Count());
         }
 
         [Test]
-        public void Solve_OnlyOneGiftAndTooHeavy_ReturnEmptyList()
+        public void GetTour_OnlyOneGiftAndTooHeavy_ReturnEmptyList()
         {
             var maxWeight = 10;
             var gifts = new List<Gift>
@@ -27,14 +27,14 @@ namespace Tests.FirstStep
                 new Gift(1, 11, 0, 0)
             };
 
-            var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(gifts, maxWeight);
+            var nearestNeighbour = new NearestNeighbour();
+            var tour = nearestNeighbour.GetTour(gifts, maxWeight);
 
             Assert.AreEqual(0, tour.Count());
          }
 
         [Test]
-        public void Solve_OnlyOneGiftAndWeightIsOk_ReturnListWithGift()
+        public void GetTour_OnlyOneGiftAndWeightIsOk_ReturnListWithGift()
         {
             var maxWeight = 10;
             var gifts = new List<Gift>
@@ -42,14 +42,14 @@ namespace Tests.FirstStep
                 new Gift(1, 9, 0, 0)
             };
 
-            var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
+            var nearestNeighbour = new NearestNeighbour();
+            var tour = nearestNeighbour.GetTour(gifts, maxWeight).ToList();
 
             Assert.AreEqual(tour.First(), gifts.First());
         }
 
         [Test]
-        public void Solve_FiveGiftsWithTotalWeightUnderMaxWeight_ReturnListInCorrectOrderWithContainingAllGifts()
+        public void GetTour_FiveGiftsWithTotalWeightUnderMaxWeight_ReturnListInCorrectOrderWithContainingAllGifts()
         {
             var maxWeight = 1000;
             var gifts = new List<Gift>
@@ -61,8 +61,8 @@ namespace Tests.FirstStep
                 new Gift(5, 20, 5, 0)
             };
 
-            var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
+            var nearestNeighbour = new NearestNeighbour();
+            var tour = nearestNeighbour.GetTour(gifts, maxWeight).ToList();
             
             Assert.AreEqual(tour[0], gifts[2]);
             Assert.AreEqual(tour[1], gifts[1]);
@@ -72,7 +72,7 @@ namespace Tests.FirstStep
         }
 
         [Test]
-        public void Solve_FiveGiftsWithTotalWeightOverMaxWeight_ReturnListInCorrectOrderWithContainingOnlySubsetOfGifts()
+        public void GetTour_FiveGiftsWithTotalWeightOverMaxWeight_ReturnListInCorrectOrderWithContainingOnlySubsetOfGifts()
         {
             var maxWeight = 40;
             var gifts = new List<Gift>
@@ -84,8 +84,8 @@ namespace Tests.FirstStep
                 new Gift(5, 20, 80, 0)
             };
 
-            var greedyInsertion = new GreedyInsertion();
-            var tour = greedyInsertion.Solve(gifts, maxWeight).ToList();
+            var nearestNeighbour = new NearestNeighbour();
+            var tour = nearestNeighbour.GetTour(gifts, maxWeight).ToList();
 
             Assert.AreEqual(2, tour.Count());
             Assert.AreEqual(tour[0], gifts[4]);

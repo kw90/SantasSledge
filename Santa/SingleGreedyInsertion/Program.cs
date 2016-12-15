@@ -15,7 +15,7 @@ namespace SingleGreedyInsertion
             var reader = new Reader();
             var gifts = reader.GetGifts(path);
 
-            var tour = new GreedyInsertion().Solve(gifts, maxWeight);
+            var tour = new NearestNeighbour().GetTour(gifts, maxWeight);
 
             Plotter.Plot(tour);
             Plotter.PlotInfo(tour);

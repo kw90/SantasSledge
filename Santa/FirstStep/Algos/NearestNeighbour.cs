@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace FirstStep.Algos
 {
-    public class GreedyInsertion
+    public class NearestNeighbour
     {
-        public IEnumerable<Gift> Solve(IEnumerable<Gift> giftsInput, double maxWeight)
+        public IEnumerable<Gift> GetTour(IEnumerable<Gift> giftsInput, double maxWeight)
         {
             if (giftsInput.Any() == false)
             {
