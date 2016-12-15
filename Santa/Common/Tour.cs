@@ -7,6 +7,11 @@ namespace Common
     {
         public List<Gift> Gifts { get; private set; }
 
+        public Tour()
+        {
+            Gifts = new List<Gift>();
+        }
+
         public void AddGift(Gift gift)
         {
             Gifts.Add(gift);
