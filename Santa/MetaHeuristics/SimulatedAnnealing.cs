@@ -23,7 +23,8 @@ namespace MetaHeuristics
 
 		public List<Gift> solve(List<Gift> gifts)
 		{
-			throw new NotImplementedException();
+			//List<Tour> tours = 
+			return null;
 		}
 	}
 }

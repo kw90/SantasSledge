@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{86359EA6-7EA4-4051-B7F5-3B7B7EDD81CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaHeuristic", "MetaHeuristic\MetaHeuristic.csproj", "{294B9C3C-327A-45A7-8EE7-9444326F19E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaHeuristics", "MetaHeuristics\MetaHeuristics.csproj", "{4EDE61E2-E1EA-49A1-AF7C-E1011E7357DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,10 @@ Global
 		{209DBBEF-59CC-45B4-BD93-A2B401B82EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{209DBBEF-59CC-45B4-BD93-A2B401B82EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{209DBBEF-59CC-45B4-BD93-A2B401B82EB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{294B9C3C-327A-45A7-8EE7-9444326F19E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{294B9C3C-327A-45A7-8EE7-9444326F19E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{294B9C3C-327A-45A7-8EE7-9444326F19E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{294B9C3C-327A-45A7-8EE7-9444326F19E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDE61E2-E1EA-49A1-AF7C-E1011E7357DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDE61E2-E1EA-49A1-AF7C-E1011E7357DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDE61E2-E1EA-49A1-AF7C-E1011E7357DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDE61E2-E1EA-49A1-AF7C-E1011E7357DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
