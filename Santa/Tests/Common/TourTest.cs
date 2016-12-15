@@ -28,5 +28,13 @@ namespace Tests.Common
             testee.AddGift(new Gift(3, 0.001, 5, 5));
             Assert.IsFalse(testee.IsValid());
         }
+
+        [Test]
+        public void TestAddGift()
+        {
+            int oldCount = testee.Gifts.Count;
+            testee.AddGift(new Gift(3, 0.001, 5, 5));
+            Assert.AreEqual(oldCount + 1, testee.Gifts.Count);
+        }
     }
 }
