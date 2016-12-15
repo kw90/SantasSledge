@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5BFDEE6A-5A72-4BE9-94E5-8EEC4E96655C}</ProjectGuid>
+    <ProjectGuid>{327A6B79-BE8F-47B4-9CA1-B92E1FAACFC0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Giftgrouping</RootNamespace>
-    <AssemblyName>Giftgrouping</AssemblyName>
+    <RootNamespace>SingleGreedyInsertion</RootNamespace>
+    <AssemblyName>SingleGreedyInsertion</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{ba8945c2-8b4a-47e0-bfec-a9a45870d996}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\FirstStep\FirstStep.csproj">
+      <Project>{d0ec511f-c29c-492e-985f-fbe2a441c310}</Project>
+      <Name>FirstStep</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

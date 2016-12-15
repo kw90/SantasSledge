@@ -1,9 +1,8 @@
 ﻿using Common;
-using Giftgrouping.CsvIO;
+using Common.CsvIO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Common;
 
 namespace Giftgrouping
 {

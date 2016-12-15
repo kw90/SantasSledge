@@ -1,10 +1,8 @@
-﻿using Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Common;
 
-namespace Giftgrouping.CsvIO
+namespace Common.CsvIO
 {
     public class Writer
     {

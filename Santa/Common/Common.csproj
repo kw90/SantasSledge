@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alogs\WeightedReindeerWeariness.cs" />
+    <Compile Include="CsvIO\Reader.cs" />
+    <Compile Include="CsvIO\Writer.cs" />
     <Compile Include="Gift.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="NorthPole.cs" />
