@@ -16,7 +16,7 @@ namespace Giftgrouping
         private static double asiaAustralia = 8;
         private static double southPolar = -60;
 
-        private static string workSpace = @"../../";
+        private static string workSpace = @"C:\Users\linri\Desktop\Santa\";
 
         static void Main(string[] args)
         {
@@ -77,11 +77,14 @@ namespace Giftgrouping
             var writer = new Writer();
 
             writer.Write(workSpace, "northAmerica", giftsForNorthAmerica);
+            writer.Write(workSpace, "groenland", groenland);
+            writer.Write(workSpace, "haway", giftsForHaway);
             writer.Write(workSpace, "southAmerica", forSouthAmerica);
             writer.Write(workSpace, "europa", giftsForEurope);
             writer.Write(workSpace, "africa", africa);
             writer.Write(workSpace, "asia", giftsForAsia);
             writer.Write(workSpace, "austrialia", australia);
+            writer.Write(workSpace, "newSealand", newSealand);
             writer.Write(workSpace, "southPole", southUnderPolar);
 
             Console.ReadLine();
