@@ -26,18 +26,16 @@ namespace MetaHeuristics
 		private double acceptanceProbability(double energy, double newEnergy, double temperature)
 		{
 			if (newEnergy < energy) return 1.0;
-
-			return Math.Exp((energy - newEnergy) / temperature);
-		}
+            return Math.Exp((energy - newEnergy) / temperature);
+        }
 
 		public List<Gift> Solve(List<Tour> tours)
 		{
-
             int numberOfTours = tours.Count;
+			List<Tour> bestTours = tours;
+            double totalCurrentEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(bestTours);
 
-			List<Tour> bestTours = new List<Tour>();
-
-			while (_temperature > 1)
+            while (_temperature > 1)
 			{
                 var maxIndex = numberOfTours - 1;
                 int randomNumber1 = random.Next(0, maxIndex);
@@ -62,10 +60,10 @@ namespace MetaHeuristics
 					tours[randomNumber1] = changedTours[0];
 					tours[randomNumber2] = changedTours[1];
 				}
-
-                var currentNewEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(bestTours);
-                Console.WriteLine("{0}, {1}", currentEnergy, currentNewEnergy);
-                if (currentEnergy < currentNewEnergy)
+                                
+                var currentNewEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(tours);
+                Console.WriteLine("{0}, {1}", totalCurrentEnergy, currentNewEnergy);
+                if (totalCurrentEnergy > currentNewEnergy)
 				{
 					bestTours = tours;
 				}
