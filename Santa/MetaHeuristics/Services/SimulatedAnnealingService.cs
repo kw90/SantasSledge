@@ -23,8 +23,7 @@ namespace MetaHeuristics.Services
         public void Run()
         {
             var area = this.reader.ReadArea(areaPath);
-
-            //this.simulatedAnnealing.Solve(area);
+            this.simulatedAnnealing.Solve(area.Tours.ToList());
         }
     }
 }

@@ -30,14 +30,10 @@ namespace MetaHeuristics
 			return Math.Exp((energy - newEnergy) / temperature);
 		}
 
-		public List<Gift> solve(List<Gift> gifts)
+		public List<Gift> Solve(List<Tour> tours)
 		{
-			//TODO get list of tours with greedy
-			//NearestNeighbour nn = new NearestNeighbour();
-			//GreedyInsertion greedy = new GreedyInsertion();
-			//greedy.Solve(gifts, 1000);
-			List<Tour> tours = new List<Tour>();
-			int numberOfTours = tours.Count;
+
+            int numberOfTours = tours.Count;
 
 			List<Tour> bestTours = new List<Tour>();
 

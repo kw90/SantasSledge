@@ -6,6 +6,6 @@ namespace MetaHeuristics
 {
 	public interface ISolver
 	{
-		List<Gift> solve(List<Gift> gifts);
+		List<Gift> Solve(List<Tour> tours);
 	}
 }
