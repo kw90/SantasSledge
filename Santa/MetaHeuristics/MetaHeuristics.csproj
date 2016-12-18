@@ -36,6 +36,8 @@
     <Compile Include="Services\SimulatedAnnealingService.cs" />
     <Compile Include="SimulatedAnnealing.cs" />
     <Compile Include="RouteImprovement.cs" />
+    <Compile Include="SimulatedAnnealingMultipleTours.cs" />
+    <Compile Include="SimulatedAnnealingTwoOpt.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

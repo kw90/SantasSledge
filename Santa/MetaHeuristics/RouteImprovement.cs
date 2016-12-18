@@ -74,8 +74,8 @@ namespace MetaHeuristics
 
             while (iteration < tour1.Gifts.Count)
             {
-                int pos1 = rnd.Next(0, tour1.Gifts.Count);
-                int pos2 = rnd.Next(0, tour2.Gifts.Count);
+                int pos1 = rnd.Next(0, tour1.Gifts.Count-1);
+                int pos2 = rnd.Next(0, tour2.Gifts.Count-1);
                 Gift gift1 = tour1.RemoveGift(pos1);
                 Gift gift2 = tour2.RemoveGift(pos2);
                 tour1.AddGiftAtPos(gift2, 0);
