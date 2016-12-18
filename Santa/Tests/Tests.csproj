@@ -58,6 +58,7 @@
     <Compile Include="Common\TourTest.cs" />
     <Compile Include="Common\WeightedReindeerWearinessTest.cs" />
     <Compile Include="FirstSolution\NearestNeighbourTests.cs" />
+    <Compile Include="MetaHeuristics\TourImprovementTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +72,10 @@
     <ProjectReference Include="..\FirstSolution\FirstSolution.csproj">
       <Project>{75dce30b-fa4c-4f3f-a914-4aebdce2603e}</Project>
       <Name>FirstSolution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MetaHeuristics\MetaHeuristics.csproj">
+      <Project>{4ede61e2-e1ea-49a1-af7c-e1011e7357dd}</Project>
+      <Name>MetaHeuristics</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

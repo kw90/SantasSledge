@@ -17,6 +17,29 @@ namespace Tests.Common
         }
 
         [Test]
+        public void TestAddGiftAtPos()
+        {
+            int insertPos = 1;
+            Gift gift = new Gift(99, 15.0, 90.0, 30.0);
+            testee.AddGiftAtPos(gift, insertPos);
+            Assert.AreEqual(gift, testee.Gifts[insertPos]);
+        }
+
+        [Test]
+        public void TestRemoveGift()
+        {
+            int oldCount = testee.Gifts.Count;
+            int positionToRemove = 1;
+            Gift removed = testee.RemoveGift(positionToRemove);
+
+            Assert.AreEqual(oldCount - 1, testee.Gifts.Count);
+            foreach(Gift gift in testee.Gifts)
+            {
+                Assert.AreNotEqual(removed, gift);
+            }
+        }
+
+        [Test]
         public void TestValidTourWeight()
         {
             Assert.IsTrue(testee.IsValid());

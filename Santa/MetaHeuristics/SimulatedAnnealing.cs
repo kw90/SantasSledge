@@ -52,7 +52,7 @@ namespace MetaHeuristics
 				double secondWRW = Common.Algos.WeightedReindeerWeariness.Calculate(second);
 				double currentEnergy = firstWRW + secondWRW;
 
-				List<Tour> changedTours = TwoOpt.Swap(tours[randomNumber1], tours[randomNumber2]) as List<Tour>;
+				List<Tour> changedTours = RouteImprovement.Swap(tours[randomNumber1], tours[randomNumber2]) as List<Tour>;
 
 				first = changedTours[0];
 				second = changedTours[1];
