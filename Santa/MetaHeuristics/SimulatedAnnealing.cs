@@ -62,7 +62,9 @@ namespace MetaHeuristics
 					tours[randomNumber2] = changedTours[1];
 				}
 
-				if (currentEnergy < Common.Algos.WeightedReindeerWeariness.Calculate(bestTours))
+                var currentNewEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(bestTours);
+                Console.WriteLine("{0}, {1}", currentEnergy, currentNewEnergy);
+                if (currentEnergy < currentNewEnergy)
 				{
 					bestTours = tours;
 				}
