@@ -8,6 +8,11 @@ namespace Common
         public string Name { get; private set; }
         public IEnumerable<Tour> Tours { get; private set; }
 
+        public Area(IEnumerable<Tour> tours)
+        {
+            this.Tours = tours;
+        }
+
         public Area(string name, List<Gift> gifts)
         {
             this.Name = name;

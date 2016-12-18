@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Common.CsvIO
@@ -27,6 +28,20 @@ namespace Common.CsvIO
             }
 
             return gifts;
+        }
+
+        public Area ReadArea(string areaPath)
+        {
+            var files = Directory.GetFiles(areaPath);
+            var tours = new List<Tour>();
+            foreach (var file in files)
+            {
+                var gifts = this.GetGifts(file);
+                var tour = new Tour { Gifts = gifts };
+                tours.Add(tour);
+            }
+
+            return new Area(tours);
         }
     }
 }
