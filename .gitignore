@@ -243,3 +243,11 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Santa/Giftgrouping/southPole.csv
+/Santa/Giftgrouping/southAmerica.csv
+/Santa/Giftgrouping/northAmerica.csv
+/Santa/Giftgrouping/gifts.csv
+/Santa/Giftgrouping/europa.csv
+/Santa/Giftgrouping/austrialia.csv
+/Santa/Giftgrouping/asia.csv
+/Santa/Giftgrouping/africa.csv
