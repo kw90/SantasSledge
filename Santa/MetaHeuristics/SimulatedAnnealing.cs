@@ -39,8 +39,9 @@ namespace MetaHeuristics
 
 			while (_temperature > 1)
 			{
-				int randomNumber1 = random.Next(0, numberOfTours);
-				int randomNumber2 = random.Next(0, numberOfTours);
+                var maxIndex = numberOfTours - 1;
+                int randomNumber1 = random.Next(0, maxIndex);
+				int randomNumber2 = random.Next(0, maxIndex);
 
 				Tour first = tours[randomNumber1];
 				Tour second = tours[randomNumber2];
