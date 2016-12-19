@@ -9,7 +9,7 @@ namespace MetaHeuristics.Services
 {
     public class SimulatedAnnealingService
     {
-        const string areaPath = @"C:\Users\tcfux\Source\Repos\SantasSledge\FirstSolutions\europa";
+        const string areaPath = @"C:\Users\linri\Desktop\Santa\FirstSolution\Tours\europa";
 
         private readonly Reader reader;
         private readonly SimulatedAnnealingMultipleTours simulatedAnnealing;

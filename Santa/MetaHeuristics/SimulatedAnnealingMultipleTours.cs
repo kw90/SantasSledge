@@ -13,7 +13,7 @@ namespace MetaHeuristics
     {
         public override List<Tour> Solve(List<Tour> tours)
         {
-            List<Tour> bestTours = tours;
+            var bestTours = tours.Clone().ToList();
             double currentEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(bestTours);
 
             while (Temperature > 1)
@@ -59,11 +59,11 @@ namespace MetaHeuristics
                 Console.WriteLine("{0}, {1}", currentEnergy, currentNewEnergy);
                 if (currentEnergy > currentNewEnergy)
                 {
-                    bestTours = changedTours;
+                    bestTours = changedTours.Clone().ToList();
                 }
 
-                Writer writer = new Writer();
-                writer.WriteSolution(AreaPath, "", bestTours);
+                //Writer writer = new Writer();
+                //writer.WriteSolution(AreaPath, "", bestTours);
 
                 Temperature *= 1 - CoolingRate;
             }

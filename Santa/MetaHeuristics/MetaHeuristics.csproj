@@ -38,6 +38,7 @@
     <Compile Include="RouteImprovement.cs" />
     <Compile Include="SimulatedAnnealingMultipleTours.cs" />
     <Compile Include="SimulatedAnnealingTwoOpt.cs" />
+    <Compile Include="ToursExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
