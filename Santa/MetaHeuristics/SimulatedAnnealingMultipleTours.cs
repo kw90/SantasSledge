@@ -18,6 +18,7 @@ namespace MetaHeuristics
 
             while (Temperature > 1)
             {
+                tours = bestTours.Clone().ToList();
                 currentEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(bestTours);
                 //TODO RouteImprovement with group of tours 
                 //List<Tour> changedTours = RouteImprovement.Swap(tours) as List<Tour>;
