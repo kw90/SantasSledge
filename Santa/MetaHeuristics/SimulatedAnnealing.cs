@@ -9,6 +9,7 @@ namespace MetaHeuristics
 	{
         protected double Temperature;
 	    protected readonly Random Random = new Random();
+        public string AreaPath { get; set; }
 		protected double CoolingRate;
 
 		public SimulatedAnnealing(double temperature, double coolingRate)
@@ -29,6 +30,6 @@ namespace MetaHeuristics
             return Math.Exp((energy - newEnergy) / Temperature);
         }
 
-	    public abstract List<Gift> Solve(List<Tour> tours);
+	    public abstract List<Tour> Solve(List<Tour> tours);
 	}
 }

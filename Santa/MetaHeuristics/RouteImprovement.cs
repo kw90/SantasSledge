@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Common;
 using Common.Algos;
 
@@ -16,6 +17,7 @@ namespace MetaHeuristics
 
         public static IEnumerable<Tour> Swap(Tour tour1, Tour tour2, int pos1, int pos2)
         {
+            int pointsBeforeDrop = tour1.Gifts.Count + tour2.Gifts.Count;
             List<Tour> retVal = new List<Tour>();
 
             Gift giftForTour2 = tour1.RemoveGift(pos1);
@@ -26,6 +28,11 @@ namespace MetaHeuristics
 
             retVal.Add(tour1);
             retVal.Add(tour2);
+
+            if (tour1.Gifts.Count + tour2.Gifts.Count != pointsBeforeDrop)
+            {
+                Console.WriteLine("Points have been dropped !!! ");
+            }
 
             return retVal;
         }
@@ -49,7 +56,33 @@ namespace MetaHeuristics
             return positionToInsert;
         }
 
-        public static IEnumerable<Tour> Swap(List<Tour> tours)
+	    public static List<Tour> Swap(Tour tour1, Tour tour2)
+	    {
+	        double bestTours = double.MaxValue;
+
+	        double oldValue = WeightedReindeerWeariness.Calculate(tour1) + WeightedReindeerWeariness.Calculate(tour2);
+	        List<Tour> newBestTour = new List<Tour>() {tour1, tour2};
+	        for (int i = 0; i < tour1.Gifts.Count - 1; i++)
+	        {
+	            for (int j = 0; j < tour2.Gifts.Count - 1; j++)
+	            {
+	                List<Tour> tourList = Swap(tour1, tour2, i, j).ToList();
+	                double weariness = WeightedReindeerWeariness.Calculate(tourList);
+	                if (weariness < bestTours)
+	                {
+	                    if (Math.Abs(weariness - oldValue) > 0.001)
+	                    {
+	                        bestTours = weariness;
+	                        newBestTour = tourList;
+	                    }
+	                }
+	            }
+	        }
+
+	        return newBestTour;
+	    }
+
+        /*public static IEnumerable<Tour> Swap(List<Tour> tours)
         {
             Random rnd = new Random();
 
@@ -65,9 +98,9 @@ namespace MetaHeuristics
             tours.AddRange(Swap(tour1, tour2));
 
             return new List<Tour>() { tour1, tour2 };
-        }
+        }*/
 
-        public static IEnumerable<Tour> Swap(Tour tour1, Tour tour2)
+        /*public static IEnumerable<Tour> Swap(Tour tour1, Tour tour2)
         {
             Random rnd = new Random();
             int iteration = 0;
@@ -92,7 +125,7 @@ namespace MetaHeuristics
                 iteration++;
             }
             return new List<Tour>() { tour1, tour2 };
-        }
+        }*/
 
         public static IEnumerable<Tour> ReduceCrossings(List<Tour> tours)
         {

@@ -27,5 +27,29 @@ namespace Common.CsvIO
                 }
             }
         }
+
+        public void WriteSolution(string path, string fileName, List<Tour> tours)
+        {
+            using (var outputFile = new StreamWriter(path + fileName + ".csv"))
+            {
+                outputFile.WriteLine("GiftId,TripId");
+                int tourCounter = 1;
+                foreach (var tour in tours)
+                {
+                    var builder = new StringBuilder();
+
+                    foreach (Gift gift in tour.Gifts)
+                    {
+                        builder = new StringBuilder();
+                        builder.Append(gift.Id);
+                        builder.Append(",");
+                        builder.Append(tourCounter);
+                        outputFile.WriteLine(builder);
+                    }
+
+                    tourCounter++;                   
+                }
+            }
+        }
     }
 }

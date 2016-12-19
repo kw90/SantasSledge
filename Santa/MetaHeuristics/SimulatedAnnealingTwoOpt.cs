@@ -9,7 +9,7 @@ namespace MetaHeuristics
 {
     class SimulatedAnnealingTwoOpt : SimulatedAnnealing
     {
-        public override List<Gift> Solve(List<Tour> tours)
+        public override List<Tour> Solve(List<Tour> tours)
         {
             int numberOfTours = tours.Count;
             List<Tour> bestTours = tours;
@@ -52,14 +52,7 @@ namespace MetaHeuristics
                 Temperature *= 1 - CoolingRate;
             }
 
-            List<Gift> bestGiftOrder = new List<Gift>();
-
-            foreach (Tour tour in bestTours)
-            {
-                bestGiftOrder.AddRange(tour.Gifts);
-            }
-
-            return bestGiftOrder;
+            return bestTours;
         }
     }
 }

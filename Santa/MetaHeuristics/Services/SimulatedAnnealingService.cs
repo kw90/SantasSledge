@@ -9,20 +9,21 @@ namespace MetaHeuristics.Services
 {
     public class SimulatedAnnealingService
     {
-        const string areaPath = @"C:\Users\kaiwa\Source\Repos\SantasSledge\FirstSolutions\europa";
+        const string areaPath = @"C:\Users\tcfux\Source\Repos\SantasSledge\FirstSolutions\europa";
 
         private readonly Reader reader;
-        private readonly SimulatedAnnealing simulatedAnnealing;
+        private readonly SimulatedAnnealingMultipleTours simulatedAnnealing;
 
         public SimulatedAnnealingService()
         {
-            this.simulatedAnnealing = new SimulatedAnnealingTwoOpt();
+            this.simulatedAnnealing = new SimulatedAnnealingMultipleTours();
             this.reader = new Reader();
         }
 
         public void Run()
         {
             var area = this.reader.ReadArea(areaPath);
+            simulatedAnnealing.AreaPath = areaPath;
             this.simulatedAnnealing.Solve(area.Tours.ToList());
         }
     }

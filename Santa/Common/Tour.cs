@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Common
@@ -37,6 +38,21 @@ namespace Common
         public bool IsValid()
         {
             return GetStartWeightOfTour() <= Parameter.MaxWeight;
+        }
+
+        public Location GetMiddlePointOfTour()
+        {
+            double lat = 0;
+            double lon = 0;
+
+            foreach (Gift gift in Gifts)
+            {
+                //latitude = (lat * math.pi) / 180
+                lat += (gift.Location.Latitude * Math.PI) / 180.0;
+                lon += (gift.Location.Longitude * Math.PI) / 180.0;
+            }
+
+            return new Location(lat / Gifts.Count, lon / Gifts.Count);
         }
     }
 }

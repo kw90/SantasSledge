@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Common.utils
@@ -10,7 +11,7 @@ namespace Common.utils
         {
             foreach (var gift in gifts)
             {
-                Console.WriteLine("{0},{1}", gift.Location.Latitude, gift.Location.Longitude);
+                Debug.WriteLine("{0},{1}", gift.Location.Latitude, gift.Location.Longitude);
             }
         }
 

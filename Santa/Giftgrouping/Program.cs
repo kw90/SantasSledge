@@ -16,7 +16,7 @@ namespace Giftgrouping
         private static double asiaAustralia = 8;
         private static double southPolar = -60;
 
-        private static string workSpace = @"C:\Users\linri\Desktop\Santa\";
+        private static string workSpace = @"C:\Temp\";
 
         static void Main(string[] args)
         {
