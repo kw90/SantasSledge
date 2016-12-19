@@ -24,7 +24,7 @@ namespace MetaHeuristics
 
                 Random rnd = new Random();
                 int sdjdkflskdlfj = rnd.Next(0, tours.Count - 1);
-                Tour tour1 = tours[rnd.Next(0, tours.Count-1)];
+                Tour tour1 = tours[sdjdkflskdlfj];
                 Tour tour2 = new Tour();
                 double distance = Double.MaxValue;
                 for (int i = 0; i < tours.Count; i++)
@@ -41,7 +41,7 @@ namespace MetaHeuristics
                 }
                 /*tours.Remove(tour1);
                 tours.Remove(tour2);*/
-                
+
                 List<Tour> changedTours = new List<Tour>(tours);
                 changedTours.Remove(tour1);
                 changedTours.Remove(tour2);
