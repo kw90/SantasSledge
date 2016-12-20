@@ -37,7 +37,7 @@ namespace Common
 
         public bool IsValid()
         {
-            return GetStartWeightOfTour() <= Parameter.MaxWeight;
+            return GetStartWeightOfTour() <= Parameter.MaxWeight + Parameter.BaseSleighWeight;
         }
 
         public Location GetMiddlePointOfTour()

@@ -20,6 +20,11 @@ namespace Common.Algos
         {
             double weightedReindeerWeariness = 0.0;
 
+            if (!tour.IsValid())
+            {
+                return double.MaxValue;
+            }
+
             Location currentLocation = Parameter.InitialLocation;
             double sleighWeight = tour.GetStartWeightOfTour() + Parameter.BaseSleighWeight;
             foreach(Gift gift in tour.Gifts)

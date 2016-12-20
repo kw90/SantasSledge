@@ -15,6 +15,7 @@ namespace MetaHeuristics
         {
             var bestTours = tours.Clone().ToList();
             double currentEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(bestTours);
+            double currentNewEnergy = 0.0;
 
             while (Temperature > 1)
             {
@@ -47,25 +48,28 @@ namespace MetaHeuristics
                 changedTours.Remove(tour1);
                 changedTours.Remove(tour2);
                 List<Tour> b = RouteImprovement.Swap(tour1, tour2) as List<Tour>;
-                changedTours.AddRange(b);
-
-                double neighbourEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(changedTours);
-
-                if (AcceptanceProbability(currentEnergy, neighbourEnergy) > Random.Next(0, 1))
+                if (b[0].IsValid() && b[1].IsValid())
                 {
-                    tours = changedTours;
-                }
+                    changedTours.AddRange(b);
 
-                var currentNewEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(changedTours);
+                    double neighbourEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(changedTours);
+
+                    if (AcceptanceProbability(currentEnergy, neighbourEnergy) > Random.Next(0, 1))
+                    {
+                        tours = changedTours;
+                    }
+
+                    currentNewEnergy = Common.Algos.WeightedReindeerWeariness.Calculate(changedTours);
+                    
+                    if (currentEnergy > currentNewEnergy)
+                    {
+                        bestTours = changedTours.Clone().ToList();
+                    }
+
+                    Writer writer = new Writer();
+                    writer.WriteSolution(AreaPath, "", bestTours);
+                }
                 Console.WriteLine("{0}, {1}", currentEnergy, currentNewEnergy);
-                if (currentEnergy > currentNewEnergy)
-                {
-                    bestTours = changedTours.Clone().ToList();
-                }
-
-                //Writer writer = new Writer();
-                //writer.WriteSolution(AreaPath, "", bestTours);
-
                 Temperature *= 1 - CoolingRate;
             }
 

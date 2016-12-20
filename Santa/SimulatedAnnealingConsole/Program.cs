@@ -1,4 +1,8 @@
-﻿using MetaHeuristics.Services;
+﻿using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using MetaHeuristics.Services;
 
 namespace SimulatedAnnealingConsole
 {
@@ -6,8 +10,19 @@ namespace SimulatedAnnealingConsole
     {
         static void Main(string[] args)
         {
-            var service = new SimulatedAnnealingService();
-            service.Run();
+            string path = @"C:\temp\tours\";
+            var directories = Directory.GetDirectories(path);
+            foreach (var directory in directories)
+            {
+                new Thread(new ThreadStart(() =>
+                {
+                    var service = new SimulatedAnnealingService(directory);
+                    service.Run();
+                })).Start();
+
+            }
+
+            Console.ReadLine();
         }
     }
 }
